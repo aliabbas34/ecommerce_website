@@ -13,6 +13,22 @@ exports.getUserById=(req,res,next,id)=>{
 };
 
 exports.getUser=(req,res)=>{
-    //TODO: get back here for password.
+    req.profile.salt=undefined;
+    req.profile.encryPassword=undefined;
+    req.profile.createdAt=undefined;
+    req.profile.updatedAt=undefined;
     return res.json(req.profile);
 };
+
+//assignment code
+exports.getAllUsers=(req,res)=>{
+    User.find().exec((err,docs)=>{
+        if(err||!docs){
+            return res.status(400).json({
+                error:"No user was found in DB"
+            });
+        }
+        res.json(docs);
+    });
+};
+//assignment code
