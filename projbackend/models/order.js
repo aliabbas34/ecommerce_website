@@ -1,10 +1,10 @@
-const mongoose=require('mogoose');
+const mongoose=require('mongoose');
 
 const{ObjectId}=mongoose.Schema;
 
 const productCartSchema=new mongoose.Schema({
     products:{
-        type: ObejectId,
+        type: ObjectId,
         ref: "Product",
     },
     name:String,

@@ -2,6 +2,7 @@ const User= require('../models/user');
 const {check, validationResult}=require('express-validator');
 var jwt=require('jsonwebtoken');
 var { expressjwt: expressJwt } = require("express-jwt");
+
 exports.signout=(req,res)=>{
     res.clearCookie("token");
     res.json({
@@ -22,17 +23,7 @@ exports.signup=(req,res)=>{
 
     const user=new User(req.body);
 
-    // user.save((err,user)=>{
-    //     if(err){
-    //         return res.status(400).json({
-    //             err:"NOT able to save user in DB"
-    //         });
-    //     }
-    //     res.json(user);
-    // }); // Not able to save user in DB because its old syntax.
-
-    //The new syntax that removed the error.
-
+    //SAVING USER IN DATA BASE
     user.save().then((savedUser)=>{
         res.json(savedUser);
     }).catch((err)=>{
@@ -102,7 +93,7 @@ exports.isAuthenticated=(req,res,next)=>{
 };
 
 exports.isAdmin=(req,res,next)=>{
-    if(req.profile.role===0){
+    if(req.profile.roles===0){
         return res.status(403).json({
             error: "you are not admin, access denied"
         });
