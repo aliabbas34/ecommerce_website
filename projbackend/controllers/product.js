@@ -73,6 +73,7 @@ exports.getProduct=(req,res)=>{
     req.product.photo=undefined;
     return res.json(req.product);
 };
+
 //middleware to read photo
 exports.photo=(req,res,next)=>{
     if(req.product.photo.data){
@@ -94,9 +95,27 @@ exports.updateProduct=(req,res)=>{
             });
         }
 
+
+        
+
         //updation code
         let product=req.product;
         product=_.extend(product,fields);
+
+
+        //destructure and entry check
+        const{name,description,price,category,stock}=product;
+        if(
+            !name ||
+            !description ||
+            !price ||
+            !category ||
+            !stock
+        ){
+            return res.status(400).json({
+                error:"please include all the fields"
+            });
+        }
 
         //handle file here
         if(file.photo){
