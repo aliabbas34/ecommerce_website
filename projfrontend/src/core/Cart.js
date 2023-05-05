@@ -18,7 +18,7 @@ const Cart = () => {
     const loadAllProducts=()=>{
         return(
             <div>
-                <h2>This section is to load products</h2>
+                <h2>Products in your Cart</h2>
                 {products.map((product, index)=>(
                     <Card
                         key={index}
@@ -33,16 +33,16 @@ const Cart = () => {
         );
     };
 
-    const loadCheckout=()=>{
-        return(
-            <div>
-                <h2>This section is for checkout</h2>
-            </div>
-        );
-    };
+    // const loadCheckout=()=>{
+    //     return(
+    //         <div>
+    //             <h2>This section is for checkout</h2>
+    //         </div>
+    //     );
+    // };
 
   return (
-    <Base title="Cart Page" description="Ready to checkout">
+    <Base title="Cart Page" description="Manage your cart here">
       <div className="row text-center">
         <div className="col-6">{loadAllProducts()}</div>
         <div className="col-6">

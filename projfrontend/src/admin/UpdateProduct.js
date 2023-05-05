@@ -56,7 +56,7 @@ const UpdateProduct=({match})=>{
                     
                 });
                 preloadCategories();
-                console.log("CATE : ",categories);
+                //console.log("CATE : ",categories);
             }
         });
     };
@@ -76,7 +76,7 @@ const UpdateProduct=({match})=>{
 
     useEffect(()=>{
         preload(match.params.productId);
-        console.log(match.params.productId);
+        //console.log(match.params.productId);
     }, []);
 
 

@@ -45,7 +45,7 @@ const AddProduct=()=>{
                 setValues({...values,error:data.error});
             } else{
                 setValues({...values,categories:data, formData: new FormData()});
-                console.log("CATE : ",categories);
+                //console.log("CATE : ",categories);
             }
         });
     };

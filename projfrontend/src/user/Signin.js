@@ -36,7 +36,7 @@ const Signin=()=>{
                 })
             }
         })
-        .catch(console.log("signin request failed"))
+        .catch(err=>console.log(`signin request failed ${err}`))
     };
 
     const performRedirect=()=>{
@@ -109,13 +109,13 @@ const Signin=()=>{
     };
 
     return(
-        <Base title="Sign in page" description="A page for user to sign in!">
-            <h1>Sign in works</h1>
-            {loadingMessage}
-            {errorMessage}
+        <Base title="Sign in page" description="Enter your credentials to sign in!">
+            
+            {loadingMessage()}
+            {errorMessage()}
             {signInForm()}
             {performRedirect()}
-            <p className="text-white text-center">{JSON.stringify(values)}</p>
+            
         </Base>
     );
 };
